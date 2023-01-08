@@ -105,14 +105,17 @@ for (let i = 0; i < totalMonths; i++) {
 
 console.log("Total Profit: $", totalProfit);
 
-// Difference calculation
+// Changes variables
 let totalDifference = 0;
 let currentMonth;
 let previousMonth;
 let difference;
-let differenceArray = [];
+
+// Increase & Decrease variables
 let largest = 0;
 let smallest = 0;
+let largestMonth;
+let smallestMonth;
 
 for (let i = 0; i < totalMonths - 1; i++) {
   currentMonth = finances[i + 1][1];
@@ -120,15 +123,14 @@ for (let i = 0; i < totalMonths - 1; i++) {
   difference = currentMonth - previousMonth;
   totalDifference += difference;
 
-  // Create new array of differences
-  differenceArray.push(difference);
-
   // Greatest Increase/Decrease if statement
   if (largest < difference) {
     largest = difference;
+    largestMonth = finances[i][0];
   }
   if (smallest > difference) {
     smallest = difference;
+    smallestMonth = finances [i][0];
   }
 }
 
@@ -137,15 +139,11 @@ let average = totalDifference / 85;
 average = Math.round(average * 100) / 100;
 
 console.log("Average Change: $", average);
-// console.log(differenceArray);
-
-// console.log(differenceArray.indexOf(largest));
-// console.log(differenceArray.indexOf(smallest));
 
 // Greatest increase and decrease
 
-console.log("Greatest Increase in Profit: " + finances[24][0] + " $" + largest);
+console.log("Greatest Increase in Profit: " + largestMonth + " $" + largest);
 
 console.log(
-  "Greatest Decrease in Profit: " + finances[43][0] + " $" + smallest
+  "Greatest Decrease in Profit: " + smallestMonth + " $" + smallest
 );
